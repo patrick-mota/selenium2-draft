@@ -1,13 +1,19 @@
 <?php
 
+use Facebook\WebDriver\Remote\DesiredCapabilities;
+use Facebook\WebDriver\Remote\RemoteWebDriver;
+
+
 class sample01Test extends PHPUnit_Extensions_Selenium2TestCase
 {
 
     public function setUp()
     {
         $targetUrl = 'http://phpunit-selenium2-samples.herokuapp.com/01/';
+	$host = 'http://localhost:4444/wd/hub';
+	$driver = RemoteWebDriver::create($host, DesiredCapabilities::firefox());
 
-        $this->setHost('172.16.25.131');  // Selenium Server Host
+//        $this->setHost('localhost');  // Selenium Server Host
         $this->setPort(4444);             // Selenium Server Port
         $this->setBrowser('firefox');     // firefox, chrome, iexplorer, safari
         $this->setBrowserUrl($targetUrl);
